@@ -14,8 +14,6 @@ module.exports=async function(id,twit){
                 console.log("error:",error);
                 reject(error);
             }
-            console.log("data:",result);
-            console.log("messages:",messages);
             resolve(result,messages);
         });
     })
