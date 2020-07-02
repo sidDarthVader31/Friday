@@ -8,7 +8,7 @@ module.exports=async(twit)=>{
         consumer_key: process.env.consumer_key,
         consumer_secret: process.env.consumer_secret,
         env: process.env.env,
-        port: 3000
+        port: process.env.PORT
       });
 
      await webHook.removeWebhooks();
