@@ -47,7 +47,7 @@ module.exports = async (twit, event) => {
 const handleIncomingMessage=function(message_data,senderName,senderId,twit){
     let message =message_data.message_data.text;   
     if(message.toLowerCase().includes('hello')){
-        message=`Hey ${senderName} have a great day! and always remember they are people who care about you. If you are feeling low, talk to them and heal \n and I love you ❤️*3000`
+        message=`Hey ${senderName} have a great day! and always remember there are people who care about you. If you are feeling low, talk to them and heal \n and I love you ❤️*3000`
     }
 
     else if(message.toLowerCase().includes('follow')){
