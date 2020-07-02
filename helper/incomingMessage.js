@@ -6,6 +6,8 @@
 const sendMessage = require("./sendMessage");
 const follow=require('./follow');
 module.exports = async (twit, event) => {
+    // console.log("event:",event);
+    // console.log("********************************************");
     //send a message
     // We check that the message is a direct message
     if (!event.direct_message_events) {
@@ -19,14 +21,15 @@ module.exports = async (twit, event) => {
     ) {
       return;
     }
-    //  console.log("message:",JSON.stringify(message));
-    //  console.log("messageCreate:",JSON.stringify(message.message_create));
+    //   console.log("message:",JSON.stringify(message));
+    //   console.log("messageCreate:",JSON.stringify(message.message_create));
 
     // filter out message you send, to avoid an infinite loop
-    if (message.message_create.sender_id ===message.message_create.target.recipient_id) {
+    if (message.message_create.sender_id ==='1278273884903505921') {
       return;
     }
     else{
+        console.log(`${message.message_create.sender_id}::${message.message_create.target.recipient_id}`);
         let reply=handleIncomingMessage(message.message_create,event.users[message.message_create.sender_id].screen_name, message.message_create.sender_id,twit);
         // console.log("reply:",reply);
         // console.log("screenname:",event.users[message.message_create.sender_id].screen_name);
@@ -44,11 +47,11 @@ module.exports = async (twit, event) => {
 const handleIncomingMessage=function(message_data,senderName,senderId,twit){
     let message =message_data.message_data.text;   
     if(message.toLowerCase().includes('hello')){
-        message=`Hey ${senderName} always remember they are people who care about you. If you are feeling low, talk to them \n and I love you 3000 ❤️ *3000 `
+        message=`Hey ${senderName} have a great day! and always remember they are people who care about you. If you are feeling low, talk to them and heal \n and I love you ❤️*3000`
     }
 
     else if(message.toLowerCase().includes('follow')){
-        message="Hey , I'll follow you right away";
+        message="Sure, I'll follow you right away";
         if(senderId!="1278273884903505921"){
             follow(senderId,twit).then(()=>{
                 console.log("done");

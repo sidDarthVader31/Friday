@@ -9,7 +9,12 @@ const webhook=require('./helper/webhook');
 //initialize streams 
 const streams=require('./helper/search');
 
-streams(twit);
+streams(twit).then((val)=>{
+
+})
+.catch((e)=>{
+    console.log('error:Streams',e.toString());
+})
 
  webhook(twit)
  .then((val)=>{
